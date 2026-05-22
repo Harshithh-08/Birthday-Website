@@ -1113,8 +1113,8 @@
             .lights { 
                 width: max-content;
                 max-width: 86vw;
-                padding: 10px 24px;
-                font-size: 17px;
+                padding: 7px 18px;
+                font-size: 15px;
             }
             .birthday-banner { 
                 top: 18vh;
@@ -1140,33 +1140,33 @@
                 border-top-width: 2px;
             }
             .cake-scene { 
-                top: 69vh;
-                transform: translate(-50%, -44%) translateY(70px) scale(0.42);
+                top: 62vh;
+                transform: translate(-50%, -44%) translateY(70px) scale(0.32);
             }
             .wish-helper { 
                 left: 50%;
-                bottom: 7vh;
-                width: 252px;
-                transform: translateX(-50%) translateY(0) scale(0.62);
+                bottom: 3.5vh;
+                width: 235px;
+                transform: translateX(-50%) translateY(0) scale(0.58);
                 transform-origin: bottom center;
             }
             .wish-helper.show { 
-                transform: translateX(-50%) translateY(0) scale(0.62);
+                transform: translateX(-50%) translateY(0) scale(0.58);
             }
             .wish-note { 
-                left: 82px;
-                width: 176px;
-                padding: 12px 14px;
+                left: 76px;
+                width: 166px;
+                padding: 10px 12px;
                 border-radius: 15px 15px 15px 5px;
-                font-size: 20px;
-                line-height: 1.08;
+                font-size: 18px;
+                line-height: 1.05;
             }
             .wish-bear { 
-                width: 88px;
-                height: 106px;
+                width: 80px;
+                height: 98px;
             }
             .balloon { 
-                transform: scale(0.72);
+                transform: scale(0.58);
                 transform-origin: bottom center;
             }
             .party-popper { 
@@ -1225,6 +1225,20 @@
             }
             .music-notes span {
                 font-size: 22px;
+            }
+            @keyframes cakeRiseMobile  {
+                0% { 
+                    opacity: 0;
+                    transform: translate(-50%, -44%) translateY(82px) scale(0.31);
+                }
+                70% { 
+                    opacity: 1;
+                    transform: translate(-50%, -44%) translateY(-8px) scale(0.36);
+                }
+                100% { 
+                    opacity: 1;
+                    transform: translate(-50%, -44%) translateY(0) scale(0.34);
+                }
             }
         }
     </style>
