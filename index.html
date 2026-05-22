@@ -1077,66 +1077,136 @@
             }
         }
         @media(max-width: 760px) { 
+            body { 
+                gap: 18px;
+                min-height: 100svh;
+            }
             .box { 
                 width: 86vw;
-                height: 260px;
+                height: 220px;
+                border-radius: 18px;
             }
             .box p { 
                 font-size: 24px;
+                padding: 0 22px;
+                line-height: 1.25;
+            }
+            .buttons { 
+                width: 92vw;
+                gap: 10px;
+                justify-content: center;
+            }
+            .yes, .no { 
+                flex: 1;
+                min-width: 0;
+                max-width: 170px;
+                padding: 9px 10px;
+                font-size: 14px;
+                white-space: nowrap;
+            }
+            .yes:hover, .no:hover { 
+                transform: none;
+            }
+            .yes:active, .no:active { 
+                transform: scale(0.94);
             }
             .lights { 
                 width: max-content;
-                max-width: 82vw;
-                padding: 11px 30px;
-                font-size: 18px;
+                max-width: 86vw;
+                padding: 10px 24px;
+                font-size: 17px;
             }
             .birthday-banner { 
-                top: 19vh;
-                width: 96vw;
+                top: 18vh;
+                width: 88vw;
                 transform-origin: top center;
             }
             .flag {
-                width: 38px;
-                height: 54px;
-                font-size: 31px;
+                width: 30px;
+                height: 42px;
+                font-size: 24px;
+                padding-top: 5px;
             }
             .banner-row { 
-                gap: 4px;
-                margin-bottom: 9px;
+                gap: 3px;
+                margin-bottom: 6px;
+            }
+            .banner-row.second { 
+                margin-top: 2px;
+            }
+            .banner-string { 
+                width: 88%;
+                height: 24px;
+                border-top-width: 2px;
             }
             .cake-scene { 
-                top: 70vh;
-                transform: translate(-50%, -44%) translateY(70px) scale(0.54);
+                top: 69vh;
+                transform: translate(-50%, -44%) translateY(70px) scale(0.42);
             }
             .wish-helper { 
-                left: 2vw;
-                bottom: 4vh;
-                transform: translateX(-13%) scale(0.78);
+                left: 50%;
+                bottom: 7vh;
+                width: 252px;
+                transform: translateX(-50%) translateY(0) scale(0.62);
+                transform-origin: bottom center;
             }
             .wish-helper.show { 
-                transform: translateX(0) scale(0.78);
+                transform: translateX(-50%) translateY(0) scale(0.62);
+            }
+            .wish-note { 
+                left: 82px;
+                width: 176px;
+                padding: 12px 14px;
+                border-radius: 15px 15px 15px 5px;
+                font-size: 20px;
+                line-height: 1.08;
+            }
+            .wish-bear { 
+                width: 88px;
+                height: 106px;
+            }
+            .balloon { 
+                transform: scale(0.72);
+                transform-origin: bottom center;
+            }
+            .party-popper { 
+                width: 78px;
+                height:78px;
+                bottom: 8vh;
+            }
+            .party-popper.left { 
+                left: 1vw;
+                transform: rotate(-24deg) scale(0.82);
+            }
+            .party-popper.right{ 
+                right: 1vw;
+                transform: rotate(24deg) scaleX(-1) scale(0.82);
             }
             .final-note { 
                 padding: 28px 24px;
                 font-size: 22px;
             }
             .no-gif-reaction { 
-                top: calc(100% + 10px);
-                width: min(260px, 86vw);
+                top: calc(100% + 8px);
+                width: min(220px, 82vw);
                 transform: translateX(-50%) translateY(-8px) scale(0.9);
             }
             .no-gif-reaction.show { 
                 transform: translateX(-50%) translateY(0) scale(1);
             }
             .no-gif-reaction img { 
-                width: min(220px, 74vw);
+                width: min(160px, 58vw);
             }
             .no-gif-bubble { 
-                font-size: 16px;
-                padding: 10px 13px;
+                font-size: 14px;
+                padding: 9px 12px;
+                margin-bottom: 8px;
             }
             .no-gif-bubble::after { 
-                left: 20px;
+                left: 24px;
+                bottom: -10px;
+                width: 17px;
+                height: 17px;
             }
             .streamer-group { 
                 top: -125px;
@@ -1366,8 +1436,8 @@
 
     <!-- party popper and rest confetti -->
     <div class="popper-layer" id="popper-layer">
-        <div class="party-popper left" id="popper-left" style="--pop-rotate: -28deg;"></div>
-        <div class="party-popper right" id="popper-right" style="--pop-rotate: 28deg;"></div>
+        <div class="party-popper left" id="popper-left" style="--pop-rotate: -24deg;"></div>
+        <div class="party-popper right" id="popper-right" style="--pop-rotate: 24deg;"></div>
     </div>
     <div class="cake-celebration-decor" id="cake-celebration-decor">
         <div class="streamer-group left">
