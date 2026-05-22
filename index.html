@@ -72,8 +72,10 @@
             display: flex;
             gap:25px;
             opacity: 0;
-            animation: fadeIn 1.5s ease-in-out forwards;
+            pointer-events: none;
+            animation: fadeInButtons 1.5s ease-in-out forwards;
             animation-delay: 23s;
+            position: relative;
         }
         .yes, .no {
             padding: 10px 30px;
@@ -220,16 +222,16 @@
             top: 7vh;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 28px;
+            font-size: 23px;
             font-family: 'Playpen Sans', serif ;
-            padding: 15px 120px;
+            padding: 12px 72px;
             background: rgb(250, 222, 183);
             color: rgb(61, 42, 65); 
             opacity: 0;
             cursor: pointer;
             transition: opacity 1s ease-in-out 1.2s, transform 0.2s, background 0.2s;
             border: 0.5px solid rgb(0, 0, 0); 
-            border-radius: 40px;
+            border-radius: 36px;
             z-index: 1001;
             pointer-events: none;
             white-space: nowrap;
@@ -518,18 +520,18 @@
         .cake-scene.candle-out .smoke { 
             animation: smokeFloat 1.5s ease-out forwards;
         }
-        .cake-scene.celebration-glow::before {
+        .cake-scene.soft-glow::before {
             content: "";
             position: absolute;
             left: 50%;
             bottom: 42px;
-            width: 560px;
-            height: 260px;
+            width: 520px;
+            height: 240px;
             border-radius: 50%;
             background: radial-gradient(circle, rgba(255, 218, 92, 0.34), rgba(255, 146, 190, 0.15) 44%, transparent 72%);
             transform: translateX(-50%);
             z-index: -1;
-            animation: celebrationGlow 2.2s ease-in-out forwards;
+            animation: softCakeGlow 2.2s ease-in-out forwards;
         }
         .cake-plate { 
             position: absolute;
@@ -791,7 +793,147 @@
         .final-note p { 
             margin: 0;
         }
-
+        .no-gif-reaction { 
+            position: absolute;
+            left: 50%;
+            top: calc(100% + 12px);
+            width: min(280px, 86vw);
+            opacity: 0;
+            transform: translateX(-50%) translateY(-8px) scale(0.9);
+            pointer-events: none;
+            z-index: 4;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        body.lights-btn .no-gif-reaction { 
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .no-gif-reaction.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0) scale(1);
+        }
+        .no-gif-bubble { 
+            position: relative;
+            margin-bottom: 12px;
+            padding: 10px 16px;
+            border-radius: 20px 20px 20px 6px;
+            background: rgba(255,250,230,0.98);
+            border: 2px solid rgba(95,58,65, 0.2);
+            box-shadow: 0 12px 28px rgba(95,65,75,0.18);
+            font-family: 'DynaPuff', cursive;
+            font-size: 17px;
+            line-height: 1.25;
+            color: rgb(82,45,58);
+            text-align: center;
+        }
+        .no-gif-bubble::after { 
+            content: "";
+            position: absolute;
+            left: 34px;
+            bottom: -12px;
+            width: 20px;
+            height: 20px;
+            background: inherit;
+            border-left: 2px solid rgba(95, 58, 65, 0.2);
+            border-bottom: 2px solid rgba(95, 58, 65, 0.2);
+            transform: rotate(-45deg);
+            }
+        .no-gif-reaction img { 
+            width: min(245px, 72vw);
+            display: block;
+            margin: 0 auto;
+        }
+        .music-notes { 
+            position: fixed;
+            inset: 0;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 25;
+            transition: opacity 0.7s ease-in-out;
+        }
+        .music-notes.show { 
+            opacity: 1;
+        }
+        .music-notes span { 
+            position: absolute;
+            left: var(--x);
+            top: var(--y);
+            font-family: 'DynaPuff', cursive;
+            font-size: var(--size);
+            color: rgba(76, 54, 84, 0.5);
+            animation: musicFloat 3s ease-in-out infinite;
+            animation-delay: var(--delay);
+        }
+        .cake-celebration-decor { 
+            position: fixed;
+            inset: 0;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 24;
+            transition: opacity 0.7s ease-in-out;
+        }
+        .cake-celebration-decor.show { 
+            opacity: 1;
+        }
+        .streamer-group { 
+            position: fixed;
+            top: -150px;
+            width: 175px;
+            height: 280px;
+            pointer-events: none;
+        }
+        .streamer-group.left { 
+            left: 4vw;
+        }
+        .streamer-group.right { 
+            right: 4vw;
+        }
+        .streamer-group span { 
+            position: absolute;
+            left: var(--x);
+            top: 0;
+            width: 24px;
+            height: 210px;
+            opacity: 0;
+            transform-origin: top center;
+        }
+        .cake-celebration-decor.show .streamer-group span {
+            animation: streamerDrop 0.95s ease-out forwards, streamerSway 3s ease-in-out infinite;
+            animation-delay: var(--delay), calc(var(--delay) + 0.95s);
+        }
+        .streamer-group span::before { 
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: var(--c);
+            opacity: 0.78;
+            clip-path: polygon(
+                50% 0%,
+                82% 10%,
+                50% 20%,
+                18% 30%,
+                50% 40%,
+                82% 50%,
+                50% 60%,
+                18% 70%,
+                50% 80%,
+                82% 90%,
+                50% 100%,
+                35% 100%,
+                67% 90%,
+                35% 80%,
+                3% 70%,
+                35% 60%,
+                67% 50%,
+                35% 40%,
+                3% 30%,
+                35% 20%,
+                67% 10%,
+                35% 0%
+            );
+            filter: drop-shadow(0 8px 10px rgba(120, 70, 90, 0.12));
+        }
        @keyframes fadeInOut { 
             0% {opacity: 0;}
             15% {opacity: 1;}
@@ -801,6 +943,20 @@
         @keyframes fadeIn { 
             0% {opacity:0;}
             100%{ opacity: 1;}
+        }
+        @keyframes fadeInButtons { 
+            0% { 
+                opacity: 0;
+                pointer-events: none;
+            }
+            99% { 
+                opacity: 1;
+                pointer-events: none;
+            }
+            100% { 
+                opacity: 1;
+                pointer-events: auto;
+            }
         }
         @keyframes darkToWhite { 
             0%   { background: rgb(0, 0, 0); }    
@@ -882,6 +1038,44 @@
             0% { opacity: 0; transform: translateY(-22px) rotate(var(--r));}
             100% { opacity: 0.85; transform: translateY(0) rotate(var(--r));}
         }
+        @keyframes musicFloat { 
+            0%, 100% { 
+                transform: translateY(0) rotate(-4deg);
+                opacity: 0.35;
+            }
+            50% { 
+                transform: translateY(-22px) rotate(6deg);
+                opacity: 0.85;
+            }
+        }
+        @keyframes streamerDrop { 
+            0% { 
+                opacity: 0;
+                transform: translateY(-120px) rotate(-5deg);
+            }
+            100% { 
+                opacity: 1;
+                transform: translateY(120px) rotate(0);
+            }
+        }
+        @keyframes streamerSway { 
+            0%, 100% { 
+                transform: translateY(120px) rotate(-2deg);
+            }
+            50% { 
+                transform: translateY(126px) rotate(2deg);
+            }
+        }
+        @keyframes softCakeGlow { 
+            0%, 100% { 
+                opacity: 0.45;
+                transform: translateX(-50%) scale(0.96);
+            }
+            50% { 
+                opacity: 0.7;
+                transform: translateX(-50%) scale(1.04);
+            }
+        }
         @media(max-width: 760px) { 
             .box { 
                 width: 86vw;
@@ -893,8 +1087,8 @@
             .lights { 
                 width: max-content;
                 max-width: 82vw;
-                padding: 14px 32px;
-                font-size: 19px;
+                padding: 11px 30px;
+                font-size: 18px;
             }
             .birthday-banner { 
                 top: 19vh;
@@ -924,6 +1118,42 @@
             }
             .final-note { 
                 padding: 28px 24px;
+                font-size: 22px;
+            }
+            .no-gif-reaction { 
+                top: calc(100% + 10px);
+                width: min(260px, 86vw);
+                transform: translateX(-50%) translateY(-8px) scale(0.9);
+            }
+            .no-gif-reaction.show { 
+                transform: translateX(-50%) translateY(0) scale(1);
+            }
+            .no-gif-reaction img { 
+                width: min(220px, 74vw);
+            }
+            .no-gif-bubble { 
+                font-size: 16px;
+                padding: 10px 13px;
+            }
+            .no-gif-bubble::after { 
+                left: 20px;
+            }
+            .streamer-group { 
+                top: -125px;
+                width: 96px;
+                height: 190px;
+            }
+            .streamer-group.left { 
+                left: 2vw;
+            }
+            .streamer-group.right { 
+                right: 2vw;
+            }
+            .streamer-group span { 
+                width: 16px;
+                height: 145px;
+            }
+            .music-notes span {
                 font-size: 22px;
             }
         }
@@ -1015,6 +1245,11 @@
     <div class="buttons"> 
         <button class="yes" onclick="handleYes()"> YESSS!!! </button>
         <button class="no" onclick="handleNo()"> No :( </button>
+
+        <div class="no-gif-reaction" id="no-gif-reaction">
+            <div class="no-gif-bubble">Noooo, please don't say no... </div>
+            <img src="cry-sticker.gif" alt="Crying reaction ">
+        </div>
     </div>
 
     <!-- Circle transition -->
@@ -1037,6 +1272,12 @@
         <span style="--x:6%; --y:82%; --delay: 2.4s; --size: 5px;"></span>
         <span style="--x:94%; --y:48%; --delay: 0.2s; --size: 6px;"></span>
         <span style="--x:43%; --y:52%; --delay: 1.4s; --size: 5px;"></span>
+    </div>
+    <div class="music-notes" id="music-notes">
+        <span style="--x: 14%; --y: 28%; --size: 34px; --delay: 0s;">♪</span>
+        <span style="--x: 82%; --y: 30%; --size: 30px; --delay: 0.4s;">♫</span>
+        <span style="--x: 26%; --y: 66%; --size: 26px; --delay: 0.8s;">♪</span>
+        <span style="--x: 72%; --y: 68%; --size: 28px; --delay: 1.1s;">♬</span>
     </div>
 
     <!--Entire Decoration Part -->
@@ -1128,6 +1369,19 @@
         <div class="party-popper left" id="popper-left" style="--pop-rotate: -28deg;"></div>
         <div class="party-popper right" id="popper-right" style="--pop-rotate: 28deg;"></div>
     </div>
+    <div class="cake-celebration-decor" id="cake-celebration-decor">
+        <div class="streamer-group left">
+            <span style="--c: rgb(175, 206, 147); --x: 0px; --delay: 0s;"></span>
+            <span style="--c: rgb(255, 139, 177); --x: 38px; --delay: 0.12s;"></span>
+            <span style="--c: rgb(115, 205, 196); --x: 76px; --delay: 0.22s;"></span>
+        </div>
+
+        <div class="streamer-group right">
+            <span style="--c: rgb(168, 140, 255); --x: 0px; --delay: 0s;"></span>
+            <span style="--c: rgb(255, 139, 177); --x: 38px; --delay: 0.12s;"></span>
+            <span style="--c: rgb(175, 206, 147); --x: 76px; --delay: 0.22s;"></span>
+        </div>
+    </div>
 
     <!-- Final Message -->
     <div class="final-dim" id="final-dim"></div>
@@ -1171,7 +1425,16 @@
             const btn = document.getElementById('lights-btn');
             btn.style.pointerEvents = 'all';
         }
+        function hideNoReaction() { 
+            const reaction = document.getElementById('no-gif-reaction');
+
+            if(reaction) {
+                reaction.classList.remove('show');
+            }
+        }
         function handleYes() { 
+            hideNoReaction();
+
             const overlay = document.getElementById('overlay');
             const stars = document.getElementById('night-stars');
             const lightsBtn = document.getElementById('lights-btn');         
@@ -1185,6 +1448,8 @@
             }, 1200);
         }
         function handleNext() { 
+            hideNoReaction(); 
+
             const overlay = document.getElementById('overlay');
             const stars = document.getElementById('night-stars');
             const btn=document.getElementById('lights-btn');
@@ -1204,14 +1469,17 @@
         function handleMusic() {
             const music = document.getElementById('bg-music');
             const btn = document.getElementById('lights-btn');
+            const musicNotes = document.getElementById('music-notes');
 
             music.volume = 0.2;
             music.play().catch(() => {} );
+            musicNotes.classList.add('show'); 
+
             lockButton();
             btn.textContent='Playing Music 🎵';
 
             setTimeout(() => { 
-                btn.textContent = 'Decorate 🎈 ';
+                btn.textContent = 'Decorate 🎈';
                 btn.onclick = handleDecorate;
                 unlockButton();
             }, 1500);
@@ -1222,10 +1490,15 @@
             const banner = document.getElementById('birthday-banner');
             const cake = document.getElementById('cake-scene');
             const wishHelper = document.getElementById('wish-helper');
+            const celebrationDecor = document.getElementById('cake-celebration-decor');
+            const musicNotes = document.getElementById('music-notes');
 
             lockButton();
             btn.textContent = 'Decorating...';
             decorStage.classList.add('show');
+            musicNotes.classList.remove('show');
+            celebrationDecor.classList.add('show');
+            cake.classList.add('soft-glow');
             startBalloons();
             
             setTimeout(() => { 
@@ -1302,7 +1575,6 @@
                 popSound.play().catch((err)=> console.log('Pop sound failed:' , err));
             }, 450);
           
-            cake.classList.add('celebration-glow');
             popperLeft.classList.add('pop');
             popperRight.classList.add('pop');
             createConfetti();
@@ -1404,6 +1676,8 @@
         }
         function createSettledConfetti() { 
             const layer = document.getElementById('settled-confetti');
+            layer.innerHTML = "";
+
             const colors = ['#ff5f8f', '#ffd23f', '#7cc7ff', '#a06cff', '#ff9f1c', '#76d7a8'];
 
             for ( let i = 0; i < 70; i++ ) { 
@@ -1419,7 +1693,31 @@
                 layer.appendChild(piece);
             }
         }
+        let noClicks = 0;
+
         function handleNo() { 
+            const reaction = document.getElementById('no-gif-reaction');
+            const bubble = reaction.querySelector('.no-gif-bubble');
+            const noBtn = document.querySelector('.no');
+
+            noClicks++;
+             
+            reaction.classList.add('show');
+
+            if(noClicks === 1) { 
+                bubble.textContent = "Nooo, don't say no...";
+                noBtn.textContent = " Are you sure? 🥲";
+            }
+            else if ( noClicks === 2){ 
+                bubble.textContent = "Pleaseee, I worked so hard!! ";
+                noBtn.textContent = "Still no?";
+            }
+            else { 
+                bubble.textContent = "Okay fine... this is a yes button now.";
+                noBtn.textContent = "YESSS!!!";
+                noBtn.style.background = "rgb(202,190,255)";
+                noBtn.onclick = handleYes;
+            }
         }
     </script>
     <audio id="bg-music" loop> 
