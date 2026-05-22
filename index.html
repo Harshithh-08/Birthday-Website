@@ -1112,9 +1112,10 @@
             }
             .lights { 
                 width: max-content;
-                max-width: 86vw;
-                padding: 7px 18px;
-                font-size: 15px;
+                max-width: 82vw;
+                padding: 6px 16px;
+                font-size: 14px;
+                top: 8vh;
             }
             .birthday-banner { 
                 top: 18vh;
@@ -1143,10 +1144,27 @@
                 top: 62vh;
                 transform: translate(-50%, -44%) translateY(70px) scale(0.32);
             }
+            .cake-scene.show { 
+                animation: cakeRiseMobile 1.35s ease-out forwards;
+            }
+            @keyframes cakeRiseMobile  {
+                0% { 
+                    opacity: 0;
+                    transform: translate(-50%, -44%) translateY(82px) scale(0.31);
+                }
+                70% { 
+                    opacity: 1;
+                    transform: translate(-50%, -44%) translateY(-8px) scale(0.36);
+                }
+                100% { 
+                    opacity: 1;
+                    transform: translate(-50%, -44%) translateY(0) scale(0.34);
+                }
+            }
             .wish-helper { 
                 left: 50%;
-                bottom: 3.5vh;
-                width: 235px;
+                bottom: 1.8vh;
+                width: 220px;
                 transform: translateX(-50%) translateY(0) scale(0.58);
                 transform-origin: bottom center;
             }
@@ -1154,20 +1172,19 @@
                 transform: translateX(-50%) translateY(0) scale(0.58);
             }
             .wish-note { 
-                left: 76px;
-                width: 166px;
-                padding: 10px 12px;
-                border-radius: 15px 15px 15px 5px;
-                font-size: 18px;
+                left: 72px;
+                width: 158px;
+                padding: 9px 11px;
+                font-size: 17px;
                 line-height: 1.05;
             }
             .wish-bear { 
-                width: 80px;
-                height: 98px;
+                width: 74px;
+                height: 90px;
             }
             .balloon { 
-                transform: scale(0.58);
-                transform-origin: bottom center;
+                width: calc(var(--balloon-size) * 0.5);
+                height: calc(var(--ballon-size) * 0.62);
             }
             .party-popper { 
                 width: 78px;
@@ -1225,20 +1242,6 @@
             }
             .music-notes span {
                 font-size: 22px;
-            }
-            @keyframes cakeRiseMobile  {
-                0% { 
-                    opacity: 0;
-                    transform: translate(-50%, -44%) translateY(82px) scale(0.31);
-                }
-                70% { 
-                    opacity: 1;
-                    transform: translate(-50%, -44%) translateY(-8px) scale(0.36);
-                }
-                100% { 
-                    opacity: 1;
-                    transform: translate(-50%, -44%) translateY(0) scale(0.34);
-                }
             }
         }
     </style>
