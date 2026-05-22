@@ -1168,7 +1168,7 @@
             }
             .cake-scene { 
                 top: 58vh;
-                transform: translate(-50%, -44%) translateY(70px) scale(0.31);
+                transform: translate(-50%, -44%) translateY(70px) scale(0.38);
             }
             .cake-scene.show { 
                 animation: cakeRiseMobile 1.35s ease-out forwards;
@@ -1176,15 +1176,15 @@
             @keyframes cakeRiseMobile  {
                 0% { 
                     opacity: 0;
-                    transform: translate(-50%, -44%) translateY(82px) scale(0.27);
+                    transform: translate(-50%, -44%) translateY(82px) scale(0.34);
                 }
                 70% { 
                     opacity: 1;
-                    transform: translate(-50%, -44%) translateY(-8px) scale(0.33);
+                    transform: translate(-50%, -44%) translateY(-8px) scale(0.4);
                 }
                 100% { 
                     opacity: 1;
-                    transform: translate(-50%, -44%) translateY(0) scale(0.31);
+                    transform: translate(-50%, -44%) translateY(0) scale(0.38);
                 }
             }
             .wish-helper { 
@@ -1234,17 +1234,33 @@
                 }
             }
             .party-popper { 
-                width: 58px;
-                height:58px;
-                bottom: 6vh;
+                width: 42px;
+                height:42px;
+                bottom: 5vh;
             }
             .party-popper.left { 
-                left: -2vw;
-                transform: rotate(-24deg) scale(0.72);
+                left: 1vw;
+                transform: rotate(-24deg) scale(0.7);
             }
             .party-popper.right{ 
-                right: -2vw;
-                transform: rotate(24deg) scaleX(-1) scale(0.72);
+                right: 1vw;
+                transform: rotate(24deg) scaleX(-1) scale(0.7);
+            }
+            .party-popper::before { 
+                left: 8px;
+                top: 12px;
+                width: 24px;
+                height: 42px;
+                border-radius: 6px;
+                background: repeating-linear-gradient(135deg,rgb(255, 213, 66) 0 6px,
+                    rgb(255, 111, 148) 6px 12px,
+                    rgb(103, 185, 230) 12px 18px );
+            }
+            .party-popper::after { 
+                left: 28px;
+                top: 5px;
+                width: 16px;
+                height: 9px;
             }
             .final-note { 
                 max-height: 72vh;
