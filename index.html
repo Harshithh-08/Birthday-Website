@@ -360,30 +360,51 @@
             top: 7vh;
             left: 50%;
             transform: translateX(-50%);
+            min-width: 330px;
             font-size: 22px;
             font-family: 'Playpen Sans', serif ;
-            padding: 11px 62px;
-            background: linear-gradient(180deg, rgb(232, 224, 255), rgb(216, 204, 255));
-            color: rgb(55, 42, 78);
+            padding: 14px 58px;
+            background: rgb(244, 235, 215);
+            color: rgb(82, 48, 39);
             opacity: 0;
             cursor: pointer;
             transition: opacity 1s ease-in-out 1.2s, transform 0.2s, background 0.2s, box-shadow 0.2s;
-            border: 2px solid rgba(107, 82, 47, 0.58);
+            border: 3px solid rgb(82, 55, 36);
             border-radius: 999px;
-            box-shadow: 0 10px 24px rgba(92, 56, 88, 0.16), inset 0 -2px 0 rgba(107, 82, 47, 0.10);
+            box-shadow: 0 9px 0 rgba(82, 55, 36, 0.18), 0 18px 30px rgba(82, 55, 36, 0.18);
             z-index: 1001;
             pointer-events: none;
             white-space: nowrap;
         }
+        .lights::before {
+            content: "";
+            position: absolute;
+            inset: 8px 12px;
+            border: 2px dashed rgba(82, 48, 39, 0.78);
+            border-radius: 999px;
+            pointer-events: none;
+        }
+        .lights::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            pointer-events: none;
+            background:
+                linear-gradient(45deg, transparent 44%, rgba(82, 48, 39, 0.72) 45% 55%, transparent 56%) 17px 15px / 14px 14px no-repeat,
+                linear-gradient(-45deg, transparent 44%, rgba(82, 48, 39, 0.72) 45% 55%, transparent 56%) calc(100% - 31px) 15px / 14px 14px no-repeat,
+                linear-gradient(-45deg, transparent 44%, rgba(82, 48, 39, 0.72) 45% 55%, transparent 56%) 17px calc(100% - 29px) / 14px 14px no-repeat,
+                linear-gradient(45deg, transparent 44%, rgba(82, 48, 39, 0.72) 45% 55%, transparent 56%) calc(100% - 31px) calc(100% - 29px) / 14px 14px no-repeat;
+        }
         .lights:hover { 
-            transform: translateX(-50%) translateY(-2px) scale(1.06);
-            background: linear-gradient(180deg, rgb(239, 232, 255), rgb(224, 214, 255));
-            box-shadow: 0 14px 30px rgba(92, 56, 88, 0.20), inset 0 -2px 0 rgba(107, 82, 47, 0.10);
+            transform: translateX(-50%) translateY(-2px) scale(1.03);
+            background: rgb(248, 239, 219);
+            box-shadow: 0 11px 0 rgba(82, 55, 36, 0.16), 0 22px 34px rgba(82, 55, 36, 0.18);
         }
 
         .lights:active { 
-            transform: translateX(-50%) translateY(2px) scale(0.96);
-            box-shadow: 0 7px 16px rgba(92, 56, 88, 0.15), inset 0 2px 0 rgba(107, 82, 47, 0.08);
+            transform: translateX(-50%) translateY(3px) scale(0.98);
+            box-shadow: 0 4px 0 rgba(82, 55, 36, 0.18), 0 10px 18px rgba(82, 55, 36, 0.15);
         }
         .box, .buttons { 
             position: relative;
@@ -925,11 +946,11 @@
             left: 50%;
             top: 52%;
             width: min(520px, 84vw);
-            padding: 34px 36px;
+            padding: 38px 40px 48px;
             background: linear-gradient(145deg, rgb(255, 248, 225), rgb(252, 237, 207));
-            border: 1px solid rgba(120, 80, 70, 0.16);
-            border-radius: 18px;
-            box-shadow: 0 22px 70px rgba(72, 44, 56, 0.25);
+            border: 2px solid rgba(82, 55, 36, 0.72);
+            border-radius: 22px;
+            box-shadow: 0 22px 70px rgba(72, 44, 56, 0.25), -7px 8px 0 rgba(82, 55, 36, 0.12);
             color: rgb(66, 48, 48);
             font-family: 'Patrick Hand' , cursive;
             font-size: 25px;
@@ -941,9 +962,29 @@
             z-index: 60;
             transition: opacity 0.9s ease-in-out, transform 0.9s ease-in-out; 
         }
+        .final-note::before {
+            content: "";
+            position: absolute;
+            inset: 17px;
+            border: 2px dashed rgba(82, 55, 36, 0.58);
+            border-radius: 17px;
+            pointer-events: none;
+        }
         .final-note.show { 
             opacity: 1;
+            pointer-events: auto;
             transform: translate(-50%, -50%) rotate(-1deg) scale(1);
+        }
+        .final-note.hide {
+            opacity: 0;
+            transform: translate(-50%, -46%) rotate(1deg) scale(0.9);
+        }
+        .final-note h2,
+        .final-note h3,
+        .final-note p,
+        .final-note h4 {
+            position: relative;
+            z-index: 2;
         }
         .final-note h2 { 
             margin: 0 0 12px;
@@ -952,6 +993,279 @@
         }
         .final-note p { 
             margin: 0;
+        }
+        .final-garden {
+            position: absolute;
+            bottom: 22px;
+            width: 118px;
+            height: 78px;
+            z-index: 3;
+            pointer-events: none;
+            filter: drop-shadow(0 3px 2px rgba(82, 55, 36, 0.13));
+        }
+        .final-garden-left {
+            left: 28px;
+        }
+        .final-garden-right {
+            right: 26px;
+        }
+        .final-flower {
+            position: absolute;
+            bottom: 0;
+            width: 34px;
+            height: 54px;
+        }
+        .final-flower.small {
+            width: 25px;
+            height: 42px;
+        }
+        .final-flower.tall {
+            width: 32px;
+            height: 60px;
+        }
+        .final-flower .stem {
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 3px;
+            height: 30px;
+            background: rgb(94, 126, 77);
+            border: 1px solid rgba(74, 68, 46, 0.36);
+            border-radius: 999px;
+            transform: translateX(-50%);
+        }
+        .final-flower.small .stem {
+            height: 23px;
+        }
+        .final-flower.tall .stem {
+            height: 36px;
+        }
+        .final-flower .stem::before,
+        .final-flower .stem::after {
+            content: "";
+            position: absolute;
+            bottom: 7px;
+            width: 12px;
+            height: 7px;
+            background: rgb(132, 157, 94);
+            border: 1px solid rgba(74, 68, 46, 0.34);
+            border-radius: 12px 0 12px 0;
+        }
+        .final-flower .stem::before {
+            right: 1px;
+            transform: rotate(-28deg);
+        }
+        .final-flower .stem::after {
+            left: 1px;
+            transform: rotate(28deg) scaleX(-1);
+        }
+        .final-bloom {
+            position: absolute;
+            left: 50%;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--petal);
+            border: 1.5px solid rgb(86, 59, 44);
+            transform: translateX(-50%);
+            box-shadow:
+                0 -8px 0 -1px var(--petal),
+                8px 0 0 -1px var(--petal),
+                0 8px 0 -1px var(--petal),
+                -8px 0 0 -1px var(--petal);
+        }
+        .final-bloom::before {
+            content: "";
+            position: absolute;
+            inset: 2px;
+            border-radius: 50%;
+            background: rgb(255, 218, 113);
+            border: 1px solid rgba(86, 59, 44, 0.55);
+        }
+        .final-flower.small .final-bloom {
+            top: 8px;
+            width: 7px;
+            height: 7px;
+            box-shadow:
+                0 -6px 0 -1px var(--petal),
+                6px 0 0 -1px var(--petal),
+                0 6px 0 -1px var(--petal),
+                -6px 0 0 -1px var(--petal);
+        }
+        .final-flower.tulip .final-bloom {
+            top: 4px;
+            width: 18px;
+            height: 18px;
+            background: var(--petal);
+            border-radius: 50% 50% 42% 42%;
+            box-shadow: none;
+        }
+        .final-flower.tulip .final-bloom::before {
+            inset: auto;
+            left: 50%;
+            top: -2px;
+            width: 11px;
+            height: 12px;
+            background: var(--petal);
+            border: 0;
+            border-left: 1.5px solid rgb(86, 59, 44);
+            border-bottom: 1.5px solid rgb(86, 59, 44);
+            border-radius: 0 0 0 10px;
+            transform: translateX(-50%) rotate(-45deg);
+        }
+        .flower-pink { --petal: rgb(255, 159, 179); }
+        .flower-cream { --petal: rgb(255, 238, 205); }
+        .flower-peach { --petal: rgb(255, 205, 154); }
+        .flower-lilac { --petal: rgb(230, 188, 218); }
+        .final-garden-left .flower-pink {
+            left: 4px;
+        }
+        .final-garden-left .flower-cream {
+            left: 45px;
+            bottom: 1px;
+        }
+        .final-garden-right .flower-lilac {
+            left: 4px;
+            bottom: 1px;
+        }
+        .final-garden-right .flower-peach {
+            left: 46px;
+        }
+        .final-heart-shape {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: rgb(242, 169, 179);
+            border: 1.5px solid rgb(86, 59, 44);
+            transform: rotate(-45deg);
+            border-radius: 2px;
+        }
+        .final-heart-shape::before,
+        .final-heart-shape::after {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: inherit;
+            border: inherit;
+            border-radius: 50%;
+        }
+        .final-heart-shape::before {
+            left: 5px;
+            top: 0;
+        }
+        .final-heart-shape::after {
+            left: 0;
+            top: -5px;
+        }
+        .final-garden-left .final-heart-shape {
+            left: 2px;
+            top: 4px;
+            transform: rotate(-35deg) scale(0.72);
+        }
+        .final-garden-right .final-heart-shape {
+            left: 31px;
+            top: 8px;
+            transform: rotate(-40deg) scale(0.68);
+        }
+        .gift-button {
+            position: fixed;
+            left: 50%;
+            top: 10vh;
+            transform: translateX(-50%) translateY(-12px) scale(0.94);
+            padding: 10px 28px;
+            border-radius: 999px;
+            border: 2px solid rgba(82, 55, 36, 0.72);
+            background: rgb(255, 244, 221);
+            color: rgb(82, 48, 39);
+            box-shadow: 0 9px 22px rgba(72, 44, 56, 0.17), -3px 4px 0 rgba(82, 55, 36, 0.14);
+            font-family: 'Playpen Sans', serif;
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 62;
+            transition: opacity 0.65s ease, transform 0.65s ease, background 0.2s ease;
+            white-space: nowrap;
+        }
+        .gift-button.show {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0) scale(1);
+        }
+        .gift-button:hover {
+            background: rgb(255, 238, 212);
+            transform: translateX(-50%) translateY(-2px) scale(1.03);
+        }
+        .gift-button:active {
+            transform: translateX(-50%) translateY(2px) scale(0.97);
+        }
+        .hug-panel {
+            position: fixed;
+            left: 50%;
+            top: 52%;
+            width: min(390px, 84vw);
+            padding: 22px 20px 24px;
+            border-radius: 26px;
+            border: 2px solid rgba(82, 55, 36, 0.70);
+            background: linear-gradient(145deg, rgb(255, 230, 236), rgb(255, 242, 230));
+            box-shadow: 0 22px 70px rgba(72, 44, 56, 0.25), -6px 7px 0 rgba(82, 55, 36, 0.12);
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            transform: translate(-50%, -46%) scale(0.88);
+            z-index: 61;
+            transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 1.15, 0.35, 1);
+        }
+        .hug-panel.show {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .hug-panel::before {
+            content: "♡";
+            position: absolute;
+            left: 22px;
+            top: 18px;
+            color: rgb(218, 124, 150);
+            font-family: 'DynaPuff', cursive;
+            font-size: 20px;
+        }
+        .hug-panel::after {
+            content: "♡";
+            position: absolute;
+            right: 24px;
+            bottom: 22px;
+            color: rgb(218, 124, 150);
+            font-family: 'DynaPuff', cursive;
+            font-size: 18px;
+        }
+        .hug-title {
+            margin: 2px 0 12px;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 28px;
+            line-height: 1.05;
+            color: rgb(142, 72, 49);
+        }
+        .hug-gif-frame {
+            width: min(245px, 68vw);
+            margin: 0 auto 12px;
+            padding: 10px;
+            border-radius: 22px;
+            background: rgba(255, 248, 244, 0.78);
+            border: 1.5px dashed rgba(142, 72, 49, 0.42);
+        }
+        .hug-gif-frame .tenor-gif-embed {
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .hug-caption {
+            margin: 0;
+            font-family: 'DynaPuff', cursive;
+            font-size: 26px;
+            color: rgb(191, 81, 47);
+            letter-spacing: 0;
         }
         .no-gif-reaction { 
             position: absolute;
@@ -1347,20 +1661,32 @@
                 box-shadow: -1px 2px 0 rgba(107, 82, 47, 0.20), 0 5px 10px rgba(92, 56, 88, 0.10);
             }
             .lights { 
-                width: max-content;
+                min-width: 235px;
                 max-width: 82vw;
-                padding: 7px 18px;
+                padding: 9px 24px;
                 font-size: 14px;
                 top: 8vh;
-                box-shadow: 0 8px 16px rgba(92, 56, 88, 0.14), inset 0 -2px 0 rgba(107, 82, 47, 0.08);
+                border-width: 2px;
+                box-shadow: 0 6px 0 rgba(82, 55, 36, 0.16), 0 12px 20px rgba(82, 55, 36, 0.14);
+            }
+            .lights::before {
+                inset: 6px 9px;
+                border-width: 1.5px;
+            }
+            .lights::after {
+                background:
+                    linear-gradient(45deg, transparent 44%, rgba(82, 48, 39, 0.72) 45% 55%, transparent 56%) 12px 11px / 10px 10px no-repeat,
+                    linear-gradient(-45deg, transparent 44%, rgba(82, 48, 39, 0.72) 45% 55%, transparent 56%) calc(100% - 22px) 11px / 10px 10px no-repeat,
+                    linear-gradient(-45deg, transparent 44%, rgba(82, 48, 39, 0.72) 45% 55%, transparent 56%) 12px calc(100% - 21px) / 10px 10px no-repeat,
+                    linear-gradient(45deg, transparent 44%, rgba(82, 48, 39, 0.72) 45% 55%, transparent 56%) calc(100% - 22px) calc(100% - 21px) / 10px 10px no-repeat;
             }
             .lights:hover { 
                 transform: translateX(-50%);
-                box-shadow: 0 8px 16px rgba(92, 56, 88, 0.14), inset 0 -2px 0 rgba(107, 82, 47, 0.08);
+                box-shadow: 0 6px 0 rgba(82, 55, 36, 0.16), 0 12px 20px rgba(82, 55, 36, 0.14);
             }
             .lights:active { 
-                transform: translateX(-50%) translateY(2px) scale(0.96);
-                box-shadow: 0 5px 12px rgba(92, 56, 88, 0.13), inset 0 2px 0 rgba(107, 82, 47, 0.08);
+                transform: translateX(-50%) translateY(2px) scale(0.97);
+                box-shadow: 0 3px 0 rgba(82, 55, 36, 0.18), 0 8px 14px rgba(82, 55, 36, 0.12);
             }
             .birthday-banner { 
                 top: 18vh;
@@ -1509,11 +1835,17 @@
                 }
             }
             .final-note { 
-                max-height: 72vh;
+                width: 84vw;
+                max-height: 68vh;
                 overflow-y: auto;
-                padding: 22px 20px;
+                padding: 28px 24px 46px;
                 font-size: 18px;
                 line-height: 1.25;
+                top: 54%;
+            }
+            .final-note::before {
+                inset: 12px;
+                border-width: 1.5px;
             }
             .final-note h2 { 
                 font-size: 24px;
@@ -1525,6 +1857,41 @@
             .final-note h4 { 
                 font-size: 18px;
                 margin: 12px 0 0;
+            }
+            .final-garden {
+                bottom: 16px;
+                width: 88px;
+                height: 58px;
+                transform: scale(0.82);
+                transform-origin: bottom left;
+            }
+            .final-garden-left {
+                left: 17px;
+            }
+            .final-garden-right {
+                right: 12px;
+                transform-origin: bottom right;
+            }
+            .gift-button {
+                top: 8vh;
+                padding: 8px 18px;
+                font-size: 14px;
+                max-width: 82vw;
+            }
+            .hug-panel {
+                width: 82vw;
+                padding: 18px 15px 20px;
+            }
+            .hug-title {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+            .hug-gif-frame {
+                width: min(220px, 66vw);
+                padding: 8px;
+            }
+            .hug-caption {
+                font-size: 22px;
             }
             .no-gif-reaction { 
                 top: calc(100% + 8px);
@@ -1801,6 +2168,16 @@
     <!-- Final Message -->
     <div class="final-dim" id="final-dim"></div>
     <div class="final-note" id="final-note">
+        <div class="final-garden final-garden-left" aria-hidden="true">
+            <span class="final-heart-shape"></span>
+            <span class="final-flower flower-pink"><span class="final-bloom"></span><span class="stem"></span></span>
+            <span class="final-flower flower-cream small"><span class="final-bloom"></span><span class="stem"></span></span>
+        </div>
+        <div class="final-garden final-garden-right" aria-hidden="true">
+            <span class="final-heart-shape"></span>
+            <span class="final-flower flower-lilac small"><span class="final-bloom"></span><span class="stem"></span></span>
+            <span class="final-flower flower-peach tulip tall"><span class="final-bloom"></span><span class="stem"></span></span>
+        </div>
         <h2>For you</h2>
         <h3> HAPPYY BIRTHDAY MY LOVE!! &lt;3 </h3>
         <p> 
@@ -1817,6 +2194,14 @@
             
         </p>
         <h4> PS: I LOVEE YOUU SOOO MUCHHHH ❤️🧿 </h4>
+    </div>
+    <button class="gift-button" id="gift-btn" onclick="handleGift()">A small gift for you 🎁</button>
+    <div class="hug-panel" id="hug-panel">
+        <h3 class="hug-title">A virtual hug for you</h3>
+        <div class="hug-gif-frame">
+            <div class="tenor-gif-embed" data-postid="15689483814935894323" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/bear-hug-bear-hug-cute-bear-love-gif-15689483814935894323">Bear Hug Sticker</a> from <a href="https://tenor.com/search/bear-stickers">Bear Stickers</a></div>
+        </div>
+        <p class="hug-caption">I miss you so much.</p>
     </div>
     <button class="lights" id="lights-btn" onclick="handleNext()"> Turn Lights On ⚡️  </button>
 
@@ -2007,6 +2392,7 @@
             const btn = document.getElementById('lights-btn');
             const dim = document.getElementById('final-dim');
             const note = document.getElementById('final-note');
+            const giftBtn = document.getElementById('gift-btn');
 
             lockButton ();
             btn.style.opacity = '0';
@@ -2016,6 +2402,23 @@
             setTimeout(() => { 
                 note.classList.add('show');
             }, 800);
+
+            setTimeout(() => {
+                giftBtn.classList.add('show');
+            }, 5800);
+        }
+        function handleGift() {
+            const note = document.getElementById('final-note');
+            const giftBtn = document.getElementById('gift-btn');
+            const hugPanel = document.getElementById('hug-panel');
+
+            giftBtn.classList.remove('show');
+            note.classList.add('hide');
+
+            setTimeout(() => {
+                note.classList.remove('show');
+                hugPanel.classList.add('show');
+            }, 650);
         }
         function startBalloons () { 
             if (balloonRunning) return;
@@ -2137,6 +2540,7 @@
             }
         }
     </script>
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
     <audio id="bg-music" loop> 
         <source src="BG_Tune.mp3" type="audio/mpeg"> 
     </audio>
