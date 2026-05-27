@@ -1132,43 +1132,6 @@
         .final-garden-right .flower-peach {
             left: 46px;
         }
-        .final-heart-shape {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            background: rgb(242, 169, 179);
-            border: 1.5px solid rgb(86, 59, 44);
-            transform: rotate(-45deg);
-            border-radius: 2px;
-        }
-        .final-heart-shape::before,
-        .final-heart-shape::after {
-            content: "";
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            background: inherit;
-            border: inherit;
-            border-radius: 50%;
-        }
-        .final-heart-shape::before {
-            left: 5px;
-            top: 0;
-        }
-        .final-heart-shape::after {
-            left: 0;
-            top: -5px;
-        }
-        .final-garden-left .final-heart-shape {
-            left: 2px;
-            top: 4px;
-            transform: rotate(-35deg) scale(0.72);
-        }
-        .final-garden-right .final-heart-shape {
-            left: 31px;
-            top: 8px;
-            transform: rotate(-40deg) scale(0.68);
-        }
         .gift-button {
             position: fixed;
             left: 50%;
@@ -1256,9 +1219,11 @@
             background: rgba(255, 248, 244, 0.78);
             border: 1.5px dashed rgba(142, 72, 49, 0.42);
         }
-        .hug-gif-frame .tenor-gif-embed {
+        .hug-gif-frame .tenor-gif-embed,
+        .hug-gif-frame iframe {
             border-radius: 16px;
             overflow: hidden;
+            pointer-events: none;
         }
         .hug-caption {
             margin: 0;
@@ -2169,12 +2134,10 @@
     <div class="final-dim" id="final-dim"></div>
     <div class="final-note" id="final-note">
         <div class="final-garden final-garden-left" aria-hidden="true">
-            <span class="final-heart-shape"></span>
             <span class="final-flower flower-pink"><span class="final-bloom"></span><span class="stem"></span></span>
             <span class="final-flower flower-cream small"><span class="final-bloom"></span><span class="stem"></span></span>
         </div>
         <div class="final-garden final-garden-right" aria-hidden="true">
-            <span class="final-heart-shape"></span>
             <span class="final-flower flower-lilac small"><span class="final-bloom"></span><span class="stem"></span></span>
             <span class="final-flower flower-peach tulip tall"><span class="final-bloom"></span><span class="stem"></span></span>
         </div>
@@ -2405,7 +2368,7 @@
 
             setTimeout(() => {
                 giftBtn.classList.add('show');
-            }, 5800);
+            }, 8200);
         }
         function handleGift() {
             const note = document.getElementById('final-note');
